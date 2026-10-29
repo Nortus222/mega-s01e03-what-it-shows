@@ -1,0 +1,38 @@
+---
+layout: runbook
+title: '#4471 · dates parse mm/dd in eu locales'
+owner: support desk
+status: superseded
+reviewed: 2026-10-28
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+<Callout kind="warn">
+This incident originally treated every report as one parser bug. Use the
+<a href="/kb/incidents/4471-analysis">current investigation</a> and
+<a href="/kb/triage/dedupe">active triage guidance</a>. The original model below ignores report
+bodies and assigns the timing exceptions by tenant. It does not prove a single production cause.
+</Callout>
+
+Since April, people have reported bookings on the wrong date. The desk merged them into #4471.
+The export's parser model reads month first for day-first tenants, but booking-form hints and
+unresolved timing reports need separate investigation. A queued parser fix cannot yet be claimed
+to cover every report.
+
+## What was merged
+
+<CauseTable ticket={4471} />
+
+## Since April
+
+<QueueTimeline ticket={4471} />
+
+## Lessons
+
+- A large merged ticket can hide different causes. Follow [decision 0002](/kb/decisions/0002-dedupe-by-evidence), read the evidence and count each report ID once.
+- Write the page while the queue is still in your head.
