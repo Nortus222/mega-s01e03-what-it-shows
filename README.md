@@ -51,9 +51,9 @@ CSS and client JavaScript to `rendered/`, including
 Serve the entire directory over HTTP to keep navigation and interactivity working. It needs no
 Node.js application server after building. `npm run preview -- --port 4173` also previews the build.
 
-`rendered/` contains the prior delivery's built site, including its CSS and client JavaScript.
-That delivery passed its full production build and Safari checks. The source follow-up requires
-a fresh full build and Safari verification before publishing the updated generated site.
+`rendered/` contains the rebuilt site with the course-issued signature, derived desk refs and
+reported engineering outcomes. The full production build passed. Safari displayed the new desk
+update, unchanged computed counts and the new signature stamp correctly.
 See [verification](docs/verification.md) for the checks and their limits.
 
 ## Source and evidence

@@ -9,8 +9,13 @@
   corrections, this check failed first on the missing incident snapshot/update text, then on
   author text in the analysis page's signature frontmatter.
 
-The controller owns the fresh full production build, complete
-`rendered/` output and Safari verification; the previous generated delivery remains unchanged here.
+- `npm run build`: one fresh full production build passed and regenerated the complete
+  `rendered/` delivery.
+- The exact course proof matches all three signed source pages. Their rendered stamps were
+  checked against the derived desk ref without displaying the proof itself.
+- Safari loaded the rebuilt analysis and displayed both the 5 October desk outcomes and the new
+  derived stamp. The computed original-model and provisional investigation counts stayed intact.
+- Authored-source whitespace checks passed. Generated files retain build-emitted whitespace.
 
 The signed analysis, triage and decision 0002 pages use the course ticket as frontmatter provenance.
 Their human attribution remains separate. The render check validates ticket-shaped frontmatter
