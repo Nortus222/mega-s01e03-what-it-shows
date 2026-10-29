@@ -3,6 +3,13 @@
 > [!NOTE]
 > gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.
 
+## Reported outcome
+
+The [course desk update](https://hq.mega.dev/challenges/what-it-shows) dated 5 October 2026 reports
+#4471 closed and parser FIXED: `fix(dates): parse dd/mm for eu locales`. This is desk-reported
+production status, not our production test. The evidence below preserves the 4 October snapshot;
+the five timing exceptions remain provisional and are not confirmed resolved by the parser fix.
+
 ## Scope and count
 
 374 unique reports from desk ticket #4471 after deduplicating by report ID, resolving tenant locale and booking form, and separating the five desk-noted timing anomalies. The existing component groups 379 under parser; that includes those five unresolved reports. Intake tags and browser locale are not authoritative.
@@ -17,4 +24,4 @@ The export's causes.ts documents that the shared parser reads every date month f
 
 ## Expected result
 
-Preserve the intended tenant date through parsing and invite/reminder generation. Verify ambiguous dates and unambiguous day values with representative day-first locales. This export contains reports and classification logic, not the production parser, so a production reproduction and fix remain unverified.
+Preserve the intended tenant date through parsing and invite/reminder generation. Verify ambiguous dates and unambiguous day values with representative day-first locales. This export contains reports and classification logic, not the production parser. The desk reports a fix; we have not independently reproduced or tested that production change.

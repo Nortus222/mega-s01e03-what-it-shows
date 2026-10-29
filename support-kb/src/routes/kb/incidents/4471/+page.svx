@@ -21,8 +21,18 @@ bodies and assigns the timing exceptions by tenant. It does not prove a single p
 
 Since April, people have reported bookings on the wrong date. The desk merged them into #4471.
 The export's parser model reads month first for day-first tenants, but booking-form hints and
-unresolved timing reports need separate investigation. A queued parser fix cannot yet be claimed
-to cover every report.
+unresolved timing reports describe different problems.
+
+## Desk update after the snapshot
+
+The tables below preserve the 4 October 2026 snapshot. The
+[course desk update](https://hq.mega.dev/challenges/what-it-shows) dated 5 October 2026 reports
+#4471 closed: parser FIXED, `fix(dates): parse dd/mm for eu locales`; hint WON'T FIX,
+booking-v3 form retired.
+
+This is desk-reported production status. We have not tested the production parser or form.
+The form was retired; its hint was not fixed. The five timing reports remain provisional and need their own
+investigation; closure of #4471 does not establish their cause or resolution.
 
 ## What was merged
 

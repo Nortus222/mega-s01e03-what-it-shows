@@ -11,11 +11,11 @@
 		<link href="../../../_app/immutable/chunks/Dek69VGa.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BUJMmS2S.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/Cg3pm-K7.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.Dx-PSGK_.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.D8AEsYoY.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.Bkl8niTl.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/8.B7sT_uC2.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/BQGixASE.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/8.BTzTLKP1.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/B_l28PXe.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/C93JdnPp.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/8DaZ3Ck6.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/Sgw_EWYM.js" rel="modulepreload">
@@ -27,26 +27,31 @@
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">Triage: duplicate reports</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status accepted svelte-e2jw2j">accepted</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 1 days ago</span></p></header> <!--[-1--><!--]--> <main><p>Keep one ticket per supported cause. <a href="/kb/decisions/0002-dedupe-by-evidence">Decision 0002</a> supersedes <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>. A subject match finds a
-candidate ticket; it does not authorize a merge.</p> <h2>Before merging</h2> <ol><li>Deduplicate export rows by report ID, so overlapping pages do not inflate the count.</li> <li>Read the body. Record the intended local date, actual date and affected action. Check whether it describes month/day reversal, a one-day shift or event ordering.</li> <li>Resolve the tenant's configured locale and booking form. Browser locale and intake tags can disagree with this configuration.</li> <li>Check the processing path. For day-first tenants, booking-v3 form reports are hint candidates; app/email and booking-v2 form reports are parser candidates under the exported model.</li> <li>Compare the evidence with the candidate ticket. Merge only when symptoms and a supported common cause agree. If the cause or tenant is unknown, keep the report separate and collect evidence.</li></ol> <h2>Timing exceptions</h2> <p>Check <code>desk-notes.json</code> and the <a href="/kb/incidents/4471-analysis">current incident analysis</a>.
+candidate ticket; it does not authorize a merge.</p> <h2>Current desk outcomes</h2> <p>The export is a 4 October 2026 snapshot. The <a href="https://hq.mega.dev/challenges/what-it-shows" rel="nofollow">course desk update</a> dated 5 October 2026 reports
+#4471 closed: parser FIXED, <code>fix(dates): parse dd/mm for eu locales</code>; hint WON'T FIX,
+booking-v3 form retired. These are desk-reported production outcomes, not our production tests.
+The form's retirement does not mean its hint was fixed. For incoming reports, record whether they
+predate the fix or retirement and confirm the current processing path before linking them to a
+closed ticket. Keep the five timing exceptions provisional; this update does not resolve them.</p> <h2>Before merging</h2> <ol><li>Deduplicate export rows by report ID, so overlapping pages do not inflate the count.</li> <li>Read the body. Record the intended local date, actual date and affected action. Check whether it describes month/day reversal, a one-day shift or event ordering.</li> <li>Resolve the tenant's configured locale and booking form. Browser locale and intake tags can disagree with this configuration.</li> <li>Check the processing path. For day-first tenants, booking-v3 form reports are hint candidates; app/email and booking-v2 form reports are parser candidates under the exported model.</li> <li>Compare the evidence with the candidate ticket. Merge only when symptoms and a supported common cause agree. If the cause or tenant is unknown, keep the report separate and collect evidence.</li></ol> <h2>Timing exceptions</h2> <p>Check <code>desk-notes.json</code> and the <a href="/kb/incidents/4471-analysis">current incident analysis</a>.
 Its timing exceptions remain provisional even though the original classifier calls them parser.
 Collect original timestamps, offsets, intended local dates, calendar payloads and delivery logs.
 Do not assume a parser fix, a timezone cause or a shared cause among the exceptions.</p> <h2>Original model explorer</h2> <aside class="warn svelte-17bri61"><!---->This exported explorer compares tenant locale, form and channel only. It does not read report bodies
 or timing exceptions. Its "same cause" and "merge" labels are model suggestions, not merge approval.
 Apply the evidence checks above before acting on them.<!----></aside><!----> <div class="try svelte-gq0h2h"><!--[--><fieldset class="svelte-gq0h2h"><legend>report A</legend> <select aria-label="tenant"><!--[--><option selected="">alder.physio</option><option>copper.studio</option><option>harbour.dental</option><option>kettle.books</option><option>lantern.row</option><option>long.table</option><option>morrow.tax</option><option>nine.lanterns</option><option>pale.harbour</option><option>ridge.clinic</option><option>stone.and.sons</option><!--]--></select> <select aria-label="channel"><!--[--><option>app</option><option>email</option><option selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject"/> <code>hint</code></fieldset><fieldset class="svelte-gq0h2h"><legend>report B</legend> <select aria-label="tenant"><!--[--><option>alder.physio</option><option>copper.studio</option><option>harbour.dental</option><option selected="">kettle.books</option><option>lantern.row</option><option>long.table</option><option>morrow.tax</option><option>nine.lanterns</option><option>pale.harbour</option><option>ridge.clinic</option><option>stone.and.sons</option><!--]--></select> <select aria-label="channel"><!--[--><option>app</option><option>email</option><option selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject"/> <code>parser</code></fieldset><!--]--> <p class="verdict svelte-gq0h2h">different causes — keep apart</p></div> <table><thead><tr><th>case</th><th>same subject</th><th>same cause</th></tr></thead><tbody><!--[--><tr><td>app vs email, same tenant</td><td>no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr><td>same subject, same tenant, different channel</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><tr><td>same subject, same channel, different tenant</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><tr><td>different subject, same way in</td><td>no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr><td>no tenant on file</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><!--]--></tbody></table><!----> <h2>When you are unsure</h2> <p>Keep the report separate, state what evidence is missing and ask for it. Revisit the grouping when
-that evidence arrives. Different subjects can share a cause; identical subjects can hide different ones.</p> <p>Written by gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-71DZ-EWZZ</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+that evidence arrives. Different subjects can share a cause; identical subjects can hide different ones.</p> <p>Written by gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-SMXF-2H7G</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_1gsi3lh = {
+					__sveltekit_1coukm1 = {
 						base: new URL("../../..", location).pathname.slice(0, -1),
-						version: "1793246994383"
+						version: "1793248496621"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("../../../_app/immutable/entry/start.CKkNLMqG.js").then(async (kit) => {
-						kit.init(__sveltekit_1gsi3lh);
-						const app = await import("../../../_app/immutable/entry/app.Dx-PSGK_.js");
+						kit.init(__sveltekit_1coukm1);
+						const app = await import("../../../_app/immutable/entry/app.D8AEsYoY.js");
 						kit.start(app, element, {
 							node_ids: [0, 8],
 							data: [null,null],

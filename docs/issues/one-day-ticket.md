@@ -17,4 +17,8 @@
 
 ## Next investigation
 
+The [course desk update](https://hq.mega.dev/challenges/what-it-shows) dated 5 October 2026 reports
+#4471 closed, the parser fixed and booking-v3 retired. It does not establish a cause or resolution
+for these five timing reports, which remain provisional.
+
 Collect original event timestamps, timezone/offset information, intended local dates, generated calendar payloads, and delivery logs. Separate this investigation further if those records reveal different causes. A parser or form-hint fix alone cannot yet be claimed to address these reports.
