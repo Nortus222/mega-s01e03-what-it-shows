@@ -1,0 +1,52 @@
+---
+layout: runbook
+title: 'Triage: duplicate reports'
+owner: support desk
+status: accepted
+reviewed: 2026-10-28
+signature: 'gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.'
+---
+
+<script>
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Keep one ticket per supported cause. [Decision 0002](/kb/decisions/0002-dedupe-by-evidence)
+supersedes [decision 0001](/kb/decisions/0001-dedupe-by-subject). A subject match finds a
+candidate ticket; it does not authorize a merge.
+
+## Before merging
+
+1. Deduplicate export rows by report ID, so overlapping pages do not inflate the count.
+2. Read the body. Record the intended local date, actual date and affected action. Check whether it describes month/day reversal, a one-day shift or event ordering.
+3. Resolve the tenant's configured locale and booking form. Browser locale and intake tags can disagree with this configuration.
+4. Check the processing path. For day-first tenants, booking-v3 form reports are hint candidates; app/email and booking-v2 form reports are parser candidates under the exported model.
+5. Compare the evidence with the candidate ticket. Merge only when symptoms and a supported common cause agree. If the cause or tenant is unknown, keep the report separate and collect evidence.
+
+## Timing exceptions
+
+Check `desk-notes.json` and the [current incident analysis](/kb/incidents/4471-analysis).
+Its timing exceptions remain provisional even though the original classifier calls them parser.
+Collect original timestamps, offsets, intended local dates, calendar payloads and delivery logs.
+Do not assume a parser fix, a timezone cause or a shared cause among the exceptions.
+
+## Original model explorer
+
+<Callout kind="warn">
+This exported explorer compares tenant locale, form and channel only. It does not read report bodies
+or timing exceptions. Its "same cause" and "merge" labels are model suggestions, not merge approval.
+Apply the evidence checks above before acting on them.
+</Callout>
+
+<DedupeExplorer />
+
+## When you are unsure
+
+Keep the report separate, state what evidence is missing and ask for it. Revisit the grouping when
+that evidence arrives. Different subjects can share a cause; identical subjects can hide different ones.
+
+Written by gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.
+
+<RenderStamp {signature} />

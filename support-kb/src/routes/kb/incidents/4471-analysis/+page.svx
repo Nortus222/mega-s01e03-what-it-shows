@@ -1,0 +1,59 @@
+---
+layout: runbook
+title: '#4471 · what the evidence shows'
+owner: support desk
+status: investigating
+reviewed: 2026-10-28
+signature: 'gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.'
+---
+
+<script>
+  import InvestigationTable from '#lib/kb/InvestigationTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+The [original incident](/kb/incidents/4471) treated the merged ticket as one parser bug.
+The export supports separate parser and booking-form investigations, plus unresolved timing reports.
+Use [decision 0002](/kb/decisions/0002-dedupe-by-evidence) and the
+[current triage procedure](/kb/triage/dedupe) for incoming reports.
+
+<Callout kind="warn">
+The export contains support reports and classification code, not the production parser or form.
+The model helps route investigation. Production reproductions and fixes remain unverified.
+</Callout>
+
+<InvestigationTable ticket={4471} />
+
+## Representative evidence
+
+- R-41200, Harbour Dental app: a reminder for 7 April went out on 4 July. R-41203, Lantern Row app: 2 December became 12 February. These bodies support a month/day swap investigation.
+- R-41205, Morrow Tax app: tenant locale is fr-FR, although browser locale is en-US and intake guessed hint. Tenant configuration puts it on the parser path.
+- R-41230, Copper Studio form: intake guessed parser. Its day-first tenant uses booking-v3, so the export routes it to the hint group. R-41241, Alder Physio form, describes 6 August becoming 8 June.
+- R-41236 says an invite arrived before the booking was made. It is weaker evidence of a one-day shift and may need a separate delivery-order investigation.
+
+The raw report bodies, intake metadata and tenant directory remain in `src/lib/data`.
+The original `causes.ts` model remains unchanged. `investigation.ts` deduplicates IDs and
+holds the desk-noted exceptions apart, without inventing a root cause.
+
+## Backlog versus new inflow
+
+<QueueTimeline ticket={4471} />
+
+The chart counts each report ID once. The received series uses `receivedAt`; the merged series uses
+`mergedAt`. Reports arrived from April onward, while early July merges included reports received
+months earlier. A burst of merges can be backlog processing. It does not establish a burst of new
+failures or an overnight change in the report count. Compare arrivals with merges before escalating
+a new-inflow claim. The timeline also cannot prove when the underlying production bug began.
+
+## Follow-up work
+
+Investigate the shared month-first parser separately from the booking-v3 date hint. Keep the timing
+exceptions open pending timestamps, timezone offsets, calendar payloads and delivery logs.
+The approved issue drafts are `docs/issues/parser-ticket.md`, `docs/issues/hint-ticket.md` and
+`docs/issues/one-day-ticket.md` at the repository root.
+
+Written by gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.
+
+<RenderStamp {signature} />

@@ -1,0 +1,23 @@
+{
+  "name": "s01e03-support-kb",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "cd support-kb && vite --config ../vite.config.js --host 127.0.0.1",
+    "build": "cd support-kb && vite build --config ../vite.config.js",
+    "preview": "cd support-kb && vite preview --config ../vite.config.js --host 127.0.0.1",
+    "test": "vitest run --config vitest.config.js",
+    "test:analysis": "npm test -- tests/analysis.test.ts",
+    "test:render": "node scripts/check-render.mjs"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "4.0.0",
+    "@sveltejs/kit": "3.1.0",
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "mdsvex": "0.12.8",
+    "svelte": "5.57.3",
+    "typescript": "6.0.3",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
+  }
+}

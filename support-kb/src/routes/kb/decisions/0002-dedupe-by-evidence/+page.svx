@@ -1,0 +1,42 @@
+---
+layout: runbook
+title: '0002 · Deduplicate by cause evidence'
+owner: support desk
+status: accepted
+reviewed: 2026-10-28
+signature: 'gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.'
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Date: 28 October 2026. Supersedes [decision 0001](/kb/decisions/0001-dedupe-by-subject).
+The accepted original stays unchanged as the historical record.
+
+## Context
+
+Ticket #4471 combined reports with similar subjects but different evidence. The
+[incident analysis](/kb/incidents/4471-analysis) separates the exported parser/form model
+from unresolved timing reports. A matching subject alone cannot establish a shared cause.
+
+## Decision
+
+Read the body and resolve the tenant's configured locale and booking form before merging.
+Compare the intended date with the actual output and the affected processing path.
+Use subjects only to find candidate tickets. Browser locale and intake tags are clues, not truth.
+
+Treat the tenant/form classifier as an investigation aid. A matching model label alone does not
+authorize a merge. Require compatible symptom evidence and a supported common processing cause.
+Keep timing anomalies and unknown tenants separate until the missing evidence is available.
+Split again when evidence reveals different causes.
+
+## Consequences
+
+Triage takes more reading. Engineering receives tickets whose grouping states its evidence and
+uncertainty. The desk follows the [updated triage procedure](/kb/triage/dedupe) immediately;
+the old subject-only rule no longer governs new merges. No production fix is claimed by this record.
+
+Written by gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.
+
+<RenderStamp {signature} />
