@@ -6,6 +6,14 @@ five desk-noted timing reports apart, yielding 374 parser candidates, 33 hint ca
 five unresolved timing reports. The page computes these counts from the export at render time.
 No production parser, form fix or timezone cause is verified here.
 
+## Public tickets
+
+- [Parser candidates: 374 reports](https://github.com/Nortus222/mega-s01e03-what-it-shows/issues/1), with the original model's 379 explained.
+- [booking-v3 hint: 33 reports](https://github.com/Nortus222/mega-s01e03-what-it-shows/issues/2).
+- [Unresolved timing investigation: 5 reports](https://github.com/Nortus222/mega-s01e03-what-it-shows/issues/3).
+
+The delivery is on branch `challenge/s01e03-what-it-shows`; its PR targets `main` and remains unmerged.
+
 ## Run locally
 
 Use Node.js 24 and npm. From the repository root:
@@ -38,10 +46,9 @@ CSS and client JavaScript to `rendered/`, including
 Serve the entire directory over HTTP to keep navigation and interactivity working. It needs no
 Node.js application server after building. `npm run preview -- --port 4173` also previews the build.
 
-`rendered/` is intentionally trackable. In the two-stage delivery, the implementation agent runs
-focused SSR checks; the controller runs the final full build once, visually verifies it in Safari
-and commits the complete `rendered/` directory before publication. Generated output is pending
-until that controller step.
+`rendered/` contains the built site, including its CSS and client JavaScript. The full production
+build passed, and the analysis, navigation and reactive triage explorer were checked in Safari.
+See [verification](docs/verification.md) for the checks and their limits.
 
 ## Source and evidence
 
