@@ -4,7 +4,7 @@ title: '#4471 · what the evidence shows'
 owner: support desk
 status: investigating
 reviewed: 2026-10-28
-signature: 'gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.'
+signature: 'v1.eyJzdWIiOiI2NzgwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyNDgxNDIsImV4cCI6MTc5MzMzNDU0Mn0.xiOnQ4wWCl3IyhtvUSyM_88LnOO9SPioYY1eflRxl6c'
 ---
 
 <script>
@@ -21,8 +21,18 @@ Use [decision 0002](/kb/decisions/0002-dedupe-by-evidence) and the
 
 <Callout kind="warn">
 The export contains support reports and classification code, not the production parser or form.
-The model helps route investigation. Production reproductions and fixes remain unverified.
+The model helps route investigation. The desk's later production outcomes are reported below;
+we have not independently tested them.
 </Callout>
+
+## Desk update after the snapshot
+
+This analysis preserves the 4 October 2026 snapshot. The
+[course desk update](https://hq.mega.dev/challenges/what-it-shows) dated 5 October 2026 reports
+#4471 closed: parser FIXED, `fix(dates): parse dd/mm for eu locales`; hint WON'T FIX,
+booking-v3 form retired. These are desk-reported production outcomes, not our production tests.
+Retiring the form is not a hint fix. The five timing reports remain provisional and unresolved
+by this evidence.
 
 <InvestigationTable ticket={4471} />
 
@@ -49,10 +59,11 @@ a new-inflow claim. The timeline also cannot prove when the underlying productio
 
 ## Follow-up work
 
-Investigate the shared month-first parser separately from the booking-v3 date hint. Keep the timing
-exceptions open pending timestamps, timezone offsets, calendar payloads and delivery logs.
-The approved issue drafts are `docs/issues/parser-ticket.md`, `docs/issues/hint-ticket.md` and
-`docs/issues/one-day-ticket.md` at the repository root.
+For new month/day reports, compare the processing path and date with the desk-reported parser fix
+and booking-v3 retirement before linking to a closed ticket. Keep the timing exceptions open pending
+timestamps, timezone offsets, calendar payloads and delivery logs. The issue records in
+`docs/issues/parser-ticket.md` and `docs/issues/hint-ticket.md` include the reported outcomes;
+`docs/issues/one-day-ticket.md` remains the provisional investigation at the repository root.
 
 Written by gpt-6.1-sol via Codex in T3 Code, on behalf of Ihor.
 

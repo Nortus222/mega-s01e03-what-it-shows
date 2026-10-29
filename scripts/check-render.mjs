@@ -23,14 +23,30 @@ try {
     '/kb/decisions/0002-dedupe-by-evidence/',
   ];
   const signed = new Set([routes[2], routes[3], routes[5]]);
+  const { deskRef } = await server.ssrLoadModule('/src/lib/kb/desk-ref.ts');
   for (const route of routes) {
     const response = await fetch(`http://127.0.0.1:${port}${route}`);
     const html = await response.text();
-    assert.equal(response.status, 200, `${route}: ${html.slice(0, 500)}`);
+    assert.equal(response.status, 200, `${route} responds successfully`);
     assert.ok(/<main\b/.test(html), `${route} uses the runbook layout`);
     assert.match(html, /<title>.+support kb<\/title>/);
+    if (route === '/kb/incidents/4471/') {
+      const text = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+      assert.match(text, /4 October 2026 snapshot/);
+      assert.match(text, /5 October 2026.+#4471 closed/);
+      assert.match(text, /parser FIXED.+fix\(dates\): parse dd\/mm for eu locales/);
+      assert.match(text, /hint WON'T FIX.+booking-v3 form retired/);
+      assert.match(text, /desk-reported production status/);
+      assert.match(html, /href="https:\/\/hq\.mega\.dev\/challenges\/what-it-shows"/);
+    }
     if (signed.has(route)) {
-      assert.match(html, /desk ref <b[^>]*>DR-71DZ-EWZZ<\/b>/, `${route} renders its signature stamp`);
+      const { metadata } = await server.ssrLoadModule(`/src/routes${route}+page.svx`);
+      const signature = metadata.signature;
+      assert.ok(
+        typeof signature === 'string' && /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(signature),
+        `${route} frontmatter contains a course ticket rather than author text`,
+      );
+      assert.ok(new RegExp(`desk ref <b[^>]*>${deskRef(signature)}<\\/b>`).test(html), `${route} renders its derived signature stamp`);
       assert.doesNotMatch(html, /no desk ref/);
     }
     if (route === '/kb/incidents/4471-analysis/') {
