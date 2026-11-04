@@ -1,0 +1,10 @@
+# Template only. Set this path and ownership for the host that runs the nightly job.
+/var/log/stock-5/nightly.log {
+    daily
+    rotate 7
+    missingok
+    notifempty
+    compress
+    delaycompress
+    create 0640
+}

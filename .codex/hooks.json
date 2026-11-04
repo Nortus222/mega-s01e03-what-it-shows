@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/s02e01/scripts/check-sources.py\"",
+            "timeout": 45
+          }
+        ]
+      }
+    ]
+  }
+}
