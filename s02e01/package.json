@@ -1,0 +1,27 @@
+{
+  "name": "stock-5-reorder",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "verify": "node scripts/verify.mjs",
+    "test": "npm run test:unit && npm run test:gate",
+    "test:unit": "node --test tests/*.test.ts",
+    "test:gate": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_source_gate.py",
+    "test:integration": "node --test tests/*.integration.ts",
+    "build": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "nightly": "node src/reorder/cli.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.4",
+    "pg": "8.23.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/pg": "8.23.1",
+    "drizzle-kit": "0.31.11",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "id": "92b47e70-ebb5-4a4a-ad17-0d283c53191f",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.reorder_jobs": {
+      "name": "reorder_jobs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "sku": {
+          "name": "sku",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "night": {
+          "name": "night",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "qty": {
+          "name": "qty",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'queued'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "reorder_jobs_sku_night_unique": {
+          "name": "reorder_jobs_sku_night_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "sku",
+            "night"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "reorder_jobs_qty_positive": {
+          "name": "reorder_jobs_qty_positive",
+          "value": "\"reorder_jobs\".\"qty\" > 0"
+        }
+      },
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

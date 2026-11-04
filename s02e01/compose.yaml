@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: stock5
+      POSTGRES_PASSWORD: stock5
+      POSTGRES_DB: reorder_sjpt
+    ports:
+      - "127.0.0.1:5454:5432"
+    volumes:
+      - stock5-data-pg17:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stock5 -d reorder_sjpt"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  stock5-data-pg17:
